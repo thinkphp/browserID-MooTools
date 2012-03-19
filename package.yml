@@ -1,7 +1,7 @@
 name: browserID
 author: thinkphp
 current: v1.0
-category: utility
+category: Utilities
 tags: [browserID,mozilla,authentication,security,identity]
 docs: https://github.com/thinkphp/browserID-MooTools/blob/master/Docs/BrowserID.md
 demo: http://thinkphp.ro/apps/js-hacks/browserID-MooTools/Demos/
