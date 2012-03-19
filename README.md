@@ -16,6 +16,7 @@ Include the BrowserID include.js library in your site by adding the following sc
         <script src="https://browserid.org/include.js" type="text/javascript"></script>
 
 And
+        #head
         <script type="text/javascript" src="mootools.js"></script>
         <script type="text/javascript" src="browserID.js.js"></script>
 
