@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+   <title>Plugin BrowserID MooTools</title>
+   <style type="text/css">
+    h1,h2,h3,body { font-family:'gill sans','dejavu sans',verdana,sans-serif; }
+    h1 { font-family:menlo,'dejavu sans mono',monospace; }
+    h1 {
+      font-weight:bold;
+      font-size:43px;
+      letter-spacing: -1px;
+      color:#000;
+      margin-bottom:0;
+      position:relative;
+    }
+   button{border:none;background:transparent;margin:0 2em;}
+   </style>
+   <script src="http://www.google.com/jsapi?key=ABQIAAAA1XbMiDxx_BTCY2_FkPh06RRaGTYH6UMl8mADNa0YKuWNNa8VNxQEerTAUcfkyrr6OwBovxn7TDAH5Q"></script>
+   <script type="text/javascript">google.load("mootools", "1.4");</script>
+   <script src="https://browserid.org/include.js"></script>
+   <script src="browserID.js"></script>
+   <script type="text/javascript">
+
+   window.addEvent('domready', function(){
+        $('login').addEvent('click',function(){
+            navigator.id.getVerifiedEmail(function(assertion){
+                       if(assertion) {
+                            //got an assertion, now send it up to the server for verification
+                            verify(assertion);
+                      } else {
+                           alert("I still don't know you");
+                      }
+            });
+        });
+   });
+
+   function verify(assertion) {
+
+             var browserid = new BrowserID(assertion, {
+                             onComplete: function(response){
+                                 //if the server successfully verifies the assertion we
+                                 //updating the UI by calling 'loggedIn()'
+                                 if(response.status == 'okay') {
+                                       loggedIn(response.email)
+                                 //otherwise we handle the login failure
+                                 } else {
+                                       failure(response)
+                                 }    
+                             }
+             })
+   }
+
+   function loggedIn(email) {
+        //do stuff with email
+        var p = new Element('p').set('text','Logged In as: ' + email)
+        $('login').parentNode.replaceChild(p,$('login'))
+   }
+
+   function failure(f) {
+        //do stuff with failure
+        alert('Failure reason: ' + f.reason) 
+   }
+
+   </script>
+</head>
+<body>
+<h1>Plugin BrowserID MooTools</h1>
+<button id="login"><img src="https://browserid.org/i/sign_in_green.png" alt="sign in with browser ID"></button>
+</body>
+</html>
+
