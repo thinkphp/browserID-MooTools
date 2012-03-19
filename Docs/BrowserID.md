@@ -12,7 +12,7 @@ email verification message.
 
 ### Arguments:
 
-- assertion `String` - the encoded assertion.
+- assertion `String` - a string containing a signed claim that proves the user is who they say they are.
 
 - options   `object` - The options for the BrowserID instance.
 
@@ -37,5 +37,7 @@ email verification message.
 ### Arguments
 
 - `object` The verifier will check that the assertion was meant for your website and is valid
-           returns => {status: 'okay','email': 'user@mozilla.com'}.
+           returns => {status: 'okay','email': 'user@mozilla.com'}, 
+           otherwise returns {status: 'failure','reason': 'audience missmatch'}, 
+
 
