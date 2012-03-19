@@ -14,20 +14,18 @@ How to Use
 Include the BrowserID include.js library in your site by adding the following script tag to your pages:
 
         <script src="https://browserid.org/include.js" type="text/javascript"></script>
-
-And
-        #head
         <script type="text/javascript" src="mootools.js"></script>
         <script type="text/javascript" src="browserID.js.js"></script>
 
-Then
+Adding a pretty button:
 
-         #HTML
-         <button id="login"><img src="https://browserid.org/i/sign_in_green.png" alt="sign in with browser ID"></button>
+        #HTML
+        <button id="login"><img src="https://browserid.org/i/sign_in_green.png" alt="sign in with browser ID"></button>
 
+When DOM is ready:
 
-         #JS
-         window.addEvent('domready', function(){
+        #JS
+        window.addEvent('domready', function(){
 
                 $('login').addEvent('click',function(){
                    navigator.id.getVerifiedEmail(function(assertion){
@@ -39,7 +37,7 @@ Then
                             }
                    })
                })
-         })
+        })
 
 
          function verify(assertion) {
