@@ -3,5 +3,5 @@ author: thinkphp
 current: v1.0
 category: utility
 tags: [browserID,mozilla,authentication,security,identity]
-docs: 
-demo:
+docs: https://github.com/thinkphp/browserID-MooTools/blob/master/Docs/BrowserID.md
+demo: http://thinkphp.ro/apps/js-hacks/browserID-MooTools/Demos/
